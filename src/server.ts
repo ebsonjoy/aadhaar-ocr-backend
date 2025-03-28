@@ -1,0 +1,33 @@
+import express, { Application } from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import ocrRoutes from './routes/ocrRoutes';
+import path from 'path';
+
+dotenv.config();
+
+const app: Application = express();
+const PORT = process.env.PORT || 4000;
+
+// Middleware
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true
+}));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
+
+app.use('/uploads', express.static(path.resolve(__dirname, '../uploads')));
+
+// Routes
+app.use('/api/ocr', ocrRoutes);
+
+app.get('/', (req, res) => {
+  res.send('Server is running...');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
