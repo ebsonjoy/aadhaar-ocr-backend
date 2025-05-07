@@ -17,7 +17,7 @@ const tesseract_js_1 = __importDefault(require("tesseract.js"));
 const extractTextFromImage = (filePath) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { data: { text, confidence } } = yield tesseract_js_1.default.recognize(filePath, 'eng', Object.assign({ logger: (m) => console.log(m), psm: 6 }, { tessedit_char_whitelist: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz/ ,-' }));
-        if (confidence < 70) {
+        if (confidence < 50) {
             console.warn(`Low OCR confidence (${confidence}) for image: ${filePath}`);
         }
         return text

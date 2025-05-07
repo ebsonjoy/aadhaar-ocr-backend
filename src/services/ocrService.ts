@@ -8,7 +8,7 @@ export const extractTextFromImage = async (filePath: string): Promise<string> =>
       ...( { tessedit_char_whitelist: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz/ ,-' } as any)
     });
 
-    if (confidence < 70) {
+    if (confidence < 50) {
       console.warn(`Low OCR confidence (${confidence}) for image: ${filePath}`);
     }
 
