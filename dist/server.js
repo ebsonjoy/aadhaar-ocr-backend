@@ -14,8 +14,8 @@ const app = (0, express_1.default)();
 const PORT = process.env.PORT || 4000;
 // Middleware
 app.use((0, cors_1.default)({
-    origin: process.env.LOCAL_URL,
-    // origin:  process.env.PRODUCTION_URL,
+    // origin:process.env.LOCAL_URL,
+    origin: process.env.PRODUCTION_URL,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true
 }));
