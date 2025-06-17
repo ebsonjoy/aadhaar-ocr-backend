@@ -3,16 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseAadhaarData = void 0;
 const parseAadhaarData = (frontText, backText) => {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
-    // Improve regex patterns for more robust matching
     const nameRegex = /([A-Z][a-z]+\s+[A-Z][a-z]+(\s+[A-Z][a-z]+)?)/;
     const dobRegex = /(?:DOB\s*[:]\s*)(\d{2}\/\d{2}\/\d{4})/i;
     const genderRegex = /\b(Male|Female|Other)\b/i;
     const aadhaarNumberRegex = /(\d{4}\s\d{4}\s\d{4})/;
     const addressRegex = /Address:\s*([\s\S]*?)(?:\d{6})/;
-    // Debugging logs to understand text content
     console.log('Front Text Raw:', frontText);
     console.log('Back Text Raw:', backText);
-    // More flexible matching with fallback mechanisms
     const name = ((_b = (_a = frontText.match(nameRegex)) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.trim()) ||
         ((_d = (_c = backText.match(nameRegex)) === null || _c === void 0 ? void 0 : _c[0]) === null || _d === void 0 ? void 0 : _d.trim()) ||
         '';
@@ -28,7 +25,6 @@ const parseAadhaarData = (frontText, backText) => {
     const addressMatch = backText.match(addressRegex);
     const address = ((_s = addressMatch === null || addressMatch === void 0 ? void 0 : addressMatch[1]) === null || _s === void 0 ? void 0 : _s.trim()) || '';
     const pincode = ((_t = backText.match(/\b(\d{6})\b/)) === null || _t === void 0 ? void 0 : _t[1]) || '';
-    // Log parsed results for debugging
     console.log('Parsed Results:', {
         name,
         dob,

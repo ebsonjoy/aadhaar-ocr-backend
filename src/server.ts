@@ -10,10 +10,9 @@ dotenv.config();
 const app: Application = express();
 const PORT = process.env.PORT || 4000;
 
-// Middleware
 app.use(cors({
-  // origin:process.env.LOCAL_URL,
-  origin:  process.env.PRODUCTION_URL,
+  origin:process.env.LOCAL_URL,
+  // origin:  process.env.PRODUCTION_URL,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true
 }));
